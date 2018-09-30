@@ -3,24 +3,24 @@ USE nba_stats;
 
 CREATE TABLE teams(
 	team_id INT NOT NULL AUTO_INCREMENT,
-    abbreviation VARCHAR(3) NULL,
-    city VARCHAR(20) NOT NULL,
-    team_name VARCHAR(20) NOT NULL,
-    records VARCHAR(20) NOT NULL,
-    PRIMARY KEY (team_id));
+	abbreviation VARCHAR(3) NULL,
+	city VARCHAR(20) NOT NULL,
+	team_name VARCHAR(20) NOT NULL,
+	records VARCHAR(20) NOT NULL,
+	PRIMARY KEY (team_id));
 
 CREATE TABLE games(
 	game_id INT NOT NULL AUTO_INCREMENT,
-    home_team_id INT NOT NULL, 
-    away_team_id INT NOT NULL,
-    home_score INT NOT NULL,
-    away_score INT NOT NULL,
-    date_played VARCHAR(5),
-    season VARCHAR(4),
+	home_team_id INT NOT NULL, 
+	away_team_id INT NOT NULL,
+	home_score INT NOT NULL,
+	away_score INT NOT NULL,
+	date_played VARCHAR(5),
+ 	season VARCHAR(4),
 	matches VARCHAR(15) NOT NULL,
-    PRIMARY KEY (game_id),
-    FOREIGN KEY (home_team_id) REFERENCES TEAMS(team_id),
-    FOREIGN KEY (away_team_id) REFERENCES TEAMS(team_id));
+	PRIMARY KEY (game_id),
+	FOREIGN KEY (home_team_id) REFERENCES TEAMS(team_id),
+	FOREIGN KEY (away_team_id) REFERENCES TEAMS(team_id));
 	
 CREATE TABLE players(
 	player_id INT NOT NULL AUTO_INCREMENT,
