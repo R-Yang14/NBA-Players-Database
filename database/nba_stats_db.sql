@@ -24,42 +24,42 @@ CREATE TABLE games(
 	
 CREATE TABLE players(
 	player_id INT NOT NULL AUTO_INCREMENT,
-    t_id INT NOT NULL,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    birthdate DATE NULL,
-    season_experience INT NOT NULL,
-    role VARCHAR(10) NOT NULL,
-    height VARCHAR(20) NOT NULL,
-    weight VARCHAR(20) NOT NULL,
-    jersey_number INT NOT NULL,
-    roster_status VARCHAR(15) NOT NULL,
+	t_id INT NOT NULL,
+	first_name VARCHAR(50) NOT NULL,
+	last_name VARCHAR(50) NOT NULL,
+	birthdate DATE NULL,
+	season_experience INT NOT NULL,
+	role VARCHAR(10) NOT NULL,
+	height VARCHAR(20) NOT NULL,
+	weight VARCHAR(20) NOT NULL,
+	jersey_number INT NOT NULL,
+	roster_status VARCHAR(15) NOT NULL,
 	school VARCHAR(50) NULL,
-    country VARCHAR(50) NULL,
-    PRIMARY KEY (player_id),
-    FOREIGN KEY (t_id) REFERENCES TEAMS(team_id));
+	country VARCHAR(50) NULL,
+	PRIMARY KEY (player_id),
+	FOREIGN KEY (t_id) REFERENCES TEAMS(team_id));
     
 CREATE TABLE stats(
 	stats_id INT NOT NULL AUTO_INCREMENT,
-    g_id INT NOT NULL,
-    p_id INT NOT NULL,
-    fg_made INT NOT NULL,
-    fg_attempt INT NOT NULL,
-    threes_made INT NOT NULL,
-    threes_attempt INT NOT NULL,
-    ft_made INT NOT NULL,
-    ft_attempt INT NOT NULL,
-    off_rebound INT NOT NULL,
-    def_rebound INT NOT NULL,
-    assists INT NOT NULL,
-    steals INT NOT NULL,
-    fouls INT NOT NULL,
-    blocks INT NOT NULL,
-    turnovers INT NOT NULL,
-    points INT NOT NULL,
-    PRIMARY KEY (stats_id, g_id, p_id),
-    FOREIGN KEY (g_id) REFERENCES GAMES(game_id),
-    FOREIGN KEY (p_id) REFERENCES PLAYERS(player_id));
+	g_id INT NOT NULL,
+	p_id INT NOT NULL,
+	fg_made INT NOT NULL,
+	fg_attempt INT NOT NULL,
+	threes_made INT NOT NULL,
+	threes_attempt INT NOT NULL,
+	ft_made INT NOT NULL,
+	ft_attempt INT NOT NULL,
+	off_rebound INT NOT NULL,
+	def_rebound INT NOT NULL,
+	assists INT NOT NULL,
+	steals INT NOT NULL,
+	fouls INT NOT NULL,
+	blocks INT NOT NULL,
+	turnovers INT NOT NULL,
+	points INT NOT NULL,
+	PRIMARY KEY (stats_id, g_id, p_id),
+ 	FOREIGN KEY (g_id) REFERENCES GAMES(game_id),
+	FOREIGN KEY (p_id) REFERENCES PLAYERS(player_id));
 
 INSERT INTO teams VALUES (1, 'ATL', 'Atlanta', 'Hawks', '2-0');
 
@@ -111,8 +111,8 @@ INSERT INTO games (home_team_id, away_team_id, home_score, away_score, date_play
 	(25, 26, 115, 110, '4/7', '2018', 'POR/SAC'),
 	(27, 28, 98, 97, '4/7', '2018', 'SAS/TOR'),
 	(29, 30, 98, 70, '4/8', '2018', 'UTA/WAS'),
-    (1, 2, 98, 99, '4/8', '2018', 'ATL/BOS'),
-    (3, 4, 87, 80, '4/9', '2018', 'BKN/CHA'),
+    	(1, 2, 98, 99, '4/8', '2018', 'ATL/BOS'),
+    	(3, 4, 87, 80, '4/9', '2018', 'BKN/CHA'),
 	(5, 6, 95, 90, '4/9', '2018', 'CHI/CLE'),
 	(7, 8, 101, 99, '4/10', '2018', 'DAL/DEN'),
 	(9, 10, 89, 102, '4/10', '2018', 'DET/GSW'),
@@ -622,13 +622,13 @@ VIEW `defensive_stats` AS
     FROM
         (`stats`
         JOIN `players` ON ((`stats`.`p_id` = `players`.`player_id`)))
-    ORDER BY `players`.`last_name`;
+    	ORDER BY `players`.`last_name`;
     
     CREATE 
     ALGORITHM = UNDEFINED 
     DEFINER = `root`@`localhost` 
     SQL SECURITY DEFINER
-VIEW `home_team_wins` AS
+    VIEW `home_team_wins` AS
     SELECT 
         `games`.`matches` AS `matches`,
         `games`.`date_played` AS `date_played`,
@@ -645,7 +645,7 @@ VIEW `home_team_wins` AS
     ALGORITHM = UNDEFINED 
     DEFINER = `root`@`localhost` 
     SQL SECURITY DEFINER
-VIEW `offensive_stats` AS
+    VIEW `offensive_stats` AS
     SELECT DISTINCT
         `players`.`first_name` AS `first_name`,
         `players`.`last_name` AS `last_name`,
@@ -675,7 +675,7 @@ VIEW `offensive_stats` AS
     ALGORITHM = UNDEFINED 
     DEFINER = `root`@`localhost` 
     SQL SECURITY DEFINER
-VIEW `view_forwards_sorted_by_points_per_game` AS
+    VIEW `view_forwards_sorted_by_points_per_game` AS
     SELECT DISTINCT
         `players`.`role` AS `role`,
         `players`.`first_name` AS `first_name`,
@@ -699,7 +699,7 @@ CREATE
     ALGORITHM = UNDEFINED 
     DEFINER = `root`@`localhost` 
     SQL SECURITY DEFINER
-VIEW `view_players` AS
+    VIEW `view_players` AS
     SELECT 
         `players`.`first_name` AS `first_name`,
         `players`.`last_name` AS `last_name`,
@@ -711,7 +711,7 @@ CREATE
     ALGORITHM = UNDEFINED 
     DEFINER = `root`@`localhost` 
     SQL SECURITY DEFINER
-VIEW `view_rosters` AS
+    VIEW `view_rosters` AS
     SELECT 
         `teams`.`team_name` AS `team_name`,
         `teams`.`records` AS `records`,
